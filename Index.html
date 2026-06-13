@@ -1,1 +1,48 @@
-<h1>ok</h1>
+<!DOCTYPE html><html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halal Tour – Télécharger l'app</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{min-height:100vh;background:#1B4D3E;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Helvetica Neue',Arial,sans-serif;padding:24px;color:#fff;}
+  .logo{width:90px;height:90px;background:#EDE3D0;border-radius:22px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:40px;}
+  h1{font-size:24px;font-weight:700;text-align:center;margin-bottom:8px;color:#FAF6EC;}
+  p{font-size:14px;color:rgba(255,255,255,0.65);text-align:center;margin-bottom:32px;line-height:1.6;}
+  .badges{display:flex;flex-direction:column;gap:14px;width:100%;max-width:280px;}
+  .badge{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.18);border-radius:14px;padding:14px 18px;text-decoration:none;color:#fff;}
+  .badge .icon{font-size:28px;}
+  .badge .text .small{font-size:11px;opacity:0.7;display:block;}
+  .badge .text .big{font-size:16px;font-weight:700;}
+  .auto-msg{margin-top:28px;font-size:12px;color:rgba(255,255,255,0.4);text-align:center;}
+</style>
+</head>
+<body>
+<div class="logo">🍽️</div>
+<h1>Halal Tour</h1>
+<p>Guide des restaurants halal<br>près de chez vous</p>
+<div class="badges">
+  <a class="badge" id="appleBtn" href="https://apps.apple.com/fr/app/halal-tour-restaurants-halal/id6758136265">
+    <span class="icon">🍎</span>
+    <span class="text"><span class="small">Disponible sur</span><span class="big">App Store</span></span>
+  </a>
+  <a class="badge" id="androidBtn" href="https://play.google.com/store/apps/details?id=fr.halaltour.mobile">
+    <span class="icon">▶️</span>
+    <span class="text"><span class="small">Disponible sur</span><span class="big">Google Play</span></span>
+  </a>
+</div>
+<p class="auto-msg" id="autoMsg"></p>
+<script>
+  const params=new URLSearchParams(window.location.search);
+  const utmString=params.toString()?'?'+params.toString():'';
+  const ios=/iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const android=/Android/i.test(navigator.userAgent);
+  const appleUrl='https://apps.apple.com/fr/app/halal-tour-restaurants-halal/id6758136265'+utmString;
+  const androidUrl='https://play.google.com/store/apps/details?id=fr.halaltour.mobile'+(utmString?utmString.replace('?','&'):'');
+  document.getElementById('appleBtn').href=appleUrl;
+  document.getElementById('androidBtn').href=androidUrl;
+  if(ios){document.getElementById('autoMsg').textContent='Redirection vers l\'App Store…';setTimeout(()=>{window.location.href=appleUrl;},1200);}
+  else if(android){document.getElementById('autoMsg').textContent='Redirection vers Google Play…';setTimeout(()=>{window.location.href=androidUrl;},1200);}
+</script>
+</body>
+</html>
